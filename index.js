@@ -40,6 +40,7 @@ app.listen(config.port, () => {
 });*/
 
 const express = require('express');
+const cors = require ('cors');
 const app = express();
 
 const { config } = require('./config/index');
@@ -68,7 +69,7 @@ app.use(logErrors);
 app.use(wrapErrors);
 app.use(errorHandler);
 
-
+app.use(cors())
 
 app.listen(config.port, function() {
   console.log(`Listening http://localhost:${config.port}`);

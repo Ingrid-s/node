@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const MoviesService = require('../services/movies');
 
 const {
@@ -31,7 +32,7 @@ function moviesApi(app) {
   });
 
   router.get(
-    '/:movieId',
+    '/:movieId', cors(),
     validationHandler({ movieId: movieIdSchema }, 'params'),
     async function(req, res, next) {
       const { movieId } = req.params;
